@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .in{
+            display: inline;
+            padding: 10px 20px;
+            
+           
+            text-align: center;
+            margin: auto;
+          
+            display: flex;
+            justify-content: space-around;
+        }
+        button{
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            text-align: center;
+            margin: auto;
+            border-radius: 5px;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+        }
+       
+        button:link{
+            color: red;         
+        }
+/* once visited */
+button:visited{                    
+    color: green;
+}
+button:hover{
+    color: hotpink;
+}
+button:active{
+   background-color: blue;
+}
+        .wrapper{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height:90vh;
+            gap: 50px;
+            padding: 5px;
+        }
+        .input,.output{
+            border: 5px solid brown;
+            width: 45%;
+            min-height: 500px;
+            overflow-y: auto;
+
+        }
+        .input{
+           resize: none;
+        }
+        body{
+            background-color: lightblue;
+        }
+        .output{
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="btn">
+        <button>Run</button>
+</div>
+<div class="in">
+    <h1>Write code below</h1>
+    <h1>Get output here</h1>
+</div>
+    <div class="wrapper">
+        <textarea class="input"></textarea>
+        <iframe class="output"></iframe>
+    </div>
+
+    <script>
+       let input = document.querySelector("textarea"); // Select the textarea element
+       let output = document.querySelector("iframe"); // Select the iframe element
+       let btn = document.querySelector("button"); // Select the button element
+
+btn.onclick = execute; // Attach the execute function to the button click event
+
+function execute() {
+    let code = input.value; // Get the value from the textarea
+    output.contentWindow.document.body.innerHTML=""
+    output.contentWindow.document.write(code);  //write new code in the document
+    // let iframeDoc = output.contentWindow.document; // Access the document inside the iframe
+    // iframeDoc.open(); // Open the document for writing
+    // iframeDoc.write(code); // Write the code to the iframe's document
+    // iframeDoc.close(); // Close the document to finish writing
+}
+
+    </script>
+</body>
+</html>
